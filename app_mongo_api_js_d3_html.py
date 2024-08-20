@@ -1,11 +1,13 @@
 from bson import json_util
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template
 import pymongo
+import os
 import json
 
 app = Flask(__name__)
 
-serverUrl = "mongodb://localhost:27017"
+# setup mongo connection
+serverUrl = os.environ.get('MONGO', "mongodb://localhost:27017")
 client = pymongo.MongoClient(serverUrl)
 
 # connect to mongo db and collection
@@ -14,8 +16,13 @@ baby_collection = db.babyNames
 
 @app.route("/")
 def default():
+    return render_template('index.html')
+
+@app.route("/home")
+def home():
     dict_list = [{'id':1,'source':'python'}]
-    return jsonify(dict_list)
+    heading_text = "this text came from a varaible python"
+    return render_template('home.html', data=dict_list, heading=heading_text)
 
 @app.route("/api")
 def api():
@@ -23,4 +30,4 @@ def api():
     return json_util.dumps(data)
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5500)
+    app.run(debug=True, port=5010)
