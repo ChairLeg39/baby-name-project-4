@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baby Name Generator</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+    <h1>Baby Name Generator</h1>
+    <form id="nameForm">
+        <label for="gender">Gender:</label>
+        <select id="gender" required>
+            <option value="FEMALE">Female</option>
+            <option value="MALE">Male</option>
+        </select>
+        <br><br>
+        <label for="ethnicity">Ethnicity:</label>
+        <select id="ethnicity" required>
+            <option value="HISPANIC">Hispanic</option>
+            <option value="WHITE NON HISPANIC">White Non Hispanic</option>
+            <option value="BLACK NON HISPANIC">Black Non Hispanic</option>
+            <option value="ASIAN AND PACIFIC ISLANDER">Asian and Pacific Islander</option>
+        </select>
+        <br><br>
+        <button type="submit">Generate Names</button>
+    </form>
+    <div id="results"></div>
+    <div id="visualization"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
