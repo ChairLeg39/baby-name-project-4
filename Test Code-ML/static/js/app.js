@@ -30,46 +30,6 @@ function populateDropdown(selector, options) {
     });
 }
 
-// // Initialize the dashboard at start up
-// function init() {
-//     d3.json(url).then(data => {
-        
-//         // Extract unique genders
-//         let genders = [...new Set(data.map(item => item.Gender))];
-//         let dropdownMenuGender = d3.select("#selGender");
-
-//         // Add genders to the dropdown menu
-//         genders.forEach(gender => {
-//             console.log(gender);
-//             dropdownMenuGender.append("option")
-//                 .text(gender)
-//                 .property("value", gender);
-//         });
-
-//         // Extract unique ethnicities
-//         let ethnicities = [...new Set(data.map(item => item.Ethnicity))];
-//         let dropdownMenuEthnicity = d3.select("#selEthnicity");
-
-//         // Add ethnicities to the dropdown menu
-//         ethnicities.forEach(ethnicity => {
-//             console.log(ethnicity);
-//             dropdownMenuEthnicity.append("option")
-//                 .text(ethnicity)
-//                 .property("value", ethnicity);
-//         });
-
-//         // Extract the first gender and ethnicity
-//         let firstGender = genders[0];
-//         let firstEthnicity = ethnicities[0];
-
-//         console.log("First Gender:", firstGender);
-//         console.log("First Ethnicity:", firstEthnicity);
-
-//         // You can call functions to build initial plots here
-//         // updatePlots(firstGender, firstEthnicity);
-//     });
-// }
-
 function optionChanged() {
     let selectedGender = d3.select("#selGender").property("value");
     let selectedEthnicity = d3.select("#selEthnicity").property("value");
@@ -81,14 +41,7 @@ function optionChanged() {
     updateCharts(selectedGender, selectedEthnicity);
 }
 
-function updateCharts(gender, ethnicity) {
-    // Filter data based on selected gender and ethnicity
-    // Update your charts or visualizations here
-    // For example:
-    // updateBarChart(gender, ethnicity);
-    // updateLineChart(gender, ethnicity);
-}
-
+// Used trained models to generate names
 function generateName() {
     let selectedGender = d3.select("#selGender").property("value");
     let selectedEthnicity = d3.select("#selEthnicity").property("value");
@@ -106,9 +59,9 @@ function generateName() {
     .then(response => response.json())
     .then(data => {
         if (data.name) {
-            d3.select("#generatedName").text(data.name);
+            d3.select("#generatedName").text(data.name + " (AI-generated)");
         } else {
-            d3.select("#generatedName").text("No matching names found");
+            d3.select("#generatedName").text("Unable to generate name");
         }
     })
     .catch((error) => {
