@@ -18,7 +18,7 @@ class MarkovChain:
 
     def train(self, names):
         for name in names:
-            name = '^' + name.lower() + '$'
+            name = '^' + name + '$'
             for i in range(len(name) - 1):
                 self.chain[name[i]][name[i+1]] += 1
 
@@ -34,7 +34,7 @@ class MarkovChain:
             if next_char != '$':
                 result += next_char
             current = next_char
-        return result.capitalize() if len(result) >= min_length else self.generate(min_length, max_length)
+        return result if len(result) >= min_length else self.generate(min_length, max_length)
 
 # Global Markov chain models
 gender_ethnicity_models = {}
