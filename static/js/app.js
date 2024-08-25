@@ -27,35 +27,34 @@ function buildMetadata(sample) {
 function buildCharts(sample) {
   d3.json("baby_names.json").then((data) => {
 
-    // Get the samples field
+    // Get the metadata
     const metadata = data.metadata;
 
-    // Filter the samples for the object with the desired sample number
-    const resultArray = samples.filter("First Name");
-    const result = resultArray[0];
-    
-    // Get the otu_ids, otu_labels, and sample_values
+    // Get the first name, count and gender
+    const FirstName = result.FirstName;
+    const Count = result.Count;
+    const Gender = result.Gender;
 
     // Build a Bubble Chart
     const bubbleData = [{
-      x: "gender",
-      y: "ethnicity",
-      text: count,
+      x: FirstName,
+      y: Count,
+      text: "First Name",
       mode: 'markers',
       marker: {
-        size: "count",
-        color: "gender",
+        size: Count,
+        color: Gender,
         colorscale: 'Earth'
       }
     }];
-  const bubbleLayout = {
+    const bubbleLayout = {
       title: {
         text: "Baby Name Count By Gender",
       x: 0.05 
       },
       margin: {t: 30, l: 60},
       hovermode: "closest",
-      xaxis: {title: "Gender"},
+      xaxis: {title: "First Name"},
       yaxis: {title: "Total"},
       autosize: true,
     font: {family: "Calibri"}
