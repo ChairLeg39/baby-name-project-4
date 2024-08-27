@@ -59,7 +59,7 @@ function generateName() {
     .then(response => response.json())
     .then(data => {
         if (data.name) {
-            d3.select("#generatedName").text(data.name + " (AI-generated)");
+            d3.select("#generatedName").text(data.name);
         } else {
             d3.select("#generatedName").text("Unable to generate name");
         }
@@ -70,24 +70,24 @@ function generateName() {
     });
 }
 
-function checkGuess() {
-    let userGuess = d3.select("#userGuess").property("value").trim().toUpperCase();
-    let result = d3.select("#guessResult");
+// function checkGuess() {
+//     let userGuess = d3.select("#userGuess").property("value").trim().toUpperCase();
+//     let result = d3.select("#guessResult");
     
-    if (userGuess === generatedName.toUpperCase()) {
-        result.text("Congratulations! You win");
-        d3.select("#winnerForm").style("display", "block");
-    } else {
-        result.text("Sorry, that's not correct. But, please fill in your information below to become eligible for future opportunities. Click on the Home buttom to try again!");
-    }
-}
+//     if (userGuess === generatedName.toUpperCase()) {
+//         result.text("Congratulations! You win");
+//         d3.select("#winnerForm").style("display", "block");
+//     } else {
+//         result.text("Sorry, that's not correct. But, please fill in your information below to become eligible for future opportunities. Click on the Home buttom to try again!");
+//     }
+// }
 
-function submitWinnerInfo() {
-    let winnerName = d3.select("#winnerName").property("value");
-    console.log("Winner's name:", winnerName);
-    // Here you can add code to send this information to your server if needed
-    alert("Thank you for playing, " + winnerName + "!");
-}
+// function submitWinnerInfo() {
+//     let winnerName = d3.select("#winnerName").property("value");
+//     console.log("Winner's name:", winnerName);
+//     // Here you can add code to send this information to your server if needed
+//     alert("Thank you for playing, " + winnerName + "!");
+// }
 
 // Call the initialize function to initialize the dashboard
 init();
