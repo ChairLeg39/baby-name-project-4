@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Baby Names</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-green.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../static/css/style.css">
+
+  <!-- Header -->
+  <header class="w3-container w3-theme w3-padding w3-center" id="myHeader">
+    <h4>Team White - Baby Names Project 4</h4>
+    <h1 class="w3-xxxlarge w3-animate-bottom" class="w3-center" style.display='block'> Can you guess the baby name?</h1>
+  </header>
+</head>
+
+
+<!-- Navigation Bar -->
+<div class="w3-bar w3-black">
+  <a href="/" class="w3-bar-item w3-button w3-padding-16">Home</a>
+  <div>
+    <a href="/sourcedata" class="w3-bar-item w3-button w3-padding-16">Popular Baby Names</a>
+  </div>
+  <div>
+    <a href="https://catalog.data.gov/dataset/popular-baby-names" class="w3-bar-item w3-button w3-padding-16">Dataset</a>
+  </div>
+  <div>
+    <a href="/powerbi" class="w3-bar-item w3-button w3-padding-16">Power BI</a>
+  </div>
+  <div>
+    <a href="https://chairleg39.github.io/baby-name-dashboard/" class="w3-bar-item w3-button w3-padding-16">Baby Names Dashboard</a>
+  </div>
+</div>
+
+<!-- Drop Down Menu -->
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 p-5 text-center bg-light">
+        <h2>Select a gender and ethnic group from the dropdown menus below:</h2>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-3">
+        <div class="card card-body bg-light">
+          <h3>Gender</h3>
+          <select id="selGender" class="custom-select custom-select-lg" onchange="optionChanged()"></select>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card card-body bg-light">
+          <h3>Ethnicity</h3>
+          <select id="selEthnicity" class="custom-select custom-select-lg" onchange="optionChanged()"></select>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-md-12 text-center">
+          <button onclick="generateName()" class="btn btn-primary btn-lg">Generate Name</button>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-md-12 text-center">
+          <h2>Generated Name: <span id="generatedName"></span></h2>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-12" id="chart-area">
+        <!-- Charts will be inserted here -->
+      </div>
+    </div>
+  </div>
+
+</body>
+
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="../static/js/app.js"></script>
+
+</html>
